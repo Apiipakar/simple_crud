@@ -4,6 +4,7 @@ let username = document.getElementById("username");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 
+// create user
 const createUser = () => {
   let inputId = id.value;
   let inputIFullName = full_name.value;
@@ -22,13 +23,13 @@ const createUser = () => {
   } else {
     let trBody = document.createElement("tr");
     trBody.innerHTML = `<tr>
-      <td class="text-center py-2">${inputId}</td>
-      <td class="text-center py-2">${inputIFullName}</td>
-      <td class="text-center py-2">${inputUser}</td>
-      <td class="text-center py-2">${inputEmail}</td>
-      <td class="text-center py-2">${inputPassword}</td>
+      <td class="text-center  text-xs sm:text-lg py-2">${inputId}</td>
+      <td class="text-center  text-xs sm:text-lg py-2">${inputIFullName}</td>
+      <td class="text-center  text-xs sm:text-lg py-2">${inputUser}</td>
+      <td class="text-center  text-xs sm:text-lg py-2">${inputEmail}</td>
+      <td class="text-center  text-xs sm:text-lg py-2">${inputPassword}</td>
       <td
-        class="text-center py-2 flex flex-row gap-4 items-center justify-center">
+        class="text-center text-xs sm:text-lg py-2 flex flex-row gap-4 items-center justify-center">
         <i
           class="fa-solid fa-edit text-green-900 cursor-pointer edit"
           id="edit"></i>
@@ -47,10 +48,21 @@ const createUser = () => {
   email.value = "";
   password.value = "";
 };
+// delete input values
+const clearInputs = () => {
+  id.value = "";
+  full_name.value = "";
+  username.value = "";
+  email.value = "";
+  password.value = "";
+};
 
 // form handle
 document.getElementById("form").addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // clear inputs
+  document.getElementById("clear").addEventListener("click", clearInputs);
   // create user
   document.getElementById("save").addEventListener("click", createUser);
   // delete user
