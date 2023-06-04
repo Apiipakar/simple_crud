@@ -50,13 +50,15 @@ const createUser = () => {
   email.value = "";
   password.value = "";
 };
-// delete input values
+// clear input values
 const clearInputs = () => {
   id.value = "";
   full_name.value = "";
   username.value = "";
   email.value = "";
   password.value = "";
+
+  updateBtn.style.display = "none";
 };
 
 // form handle
@@ -88,12 +90,16 @@ document.getElementById("form").addEventListener("submit", (e) => {
       email.value = selectedRow.children[3].textContent;
       password.value = selectedRow.children[4].textContent;
 
+      document.getElementById("save").style.display = "none";
+
       updateBtn.addEventListener("click", () => {
         selectedRow.children[0].textContent = id.value;
         selectedRow.children[1].textContent = full_name.value;
         selectedRow.children[2].textContent = username.value;
         selectedRow.children[3].textContent = email.value;
         selectedRow.children[4].textContent = password.value;
+
+        document.getElementById("save").style.display = "flex";
       });
     }
   });
