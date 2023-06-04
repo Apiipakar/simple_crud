@@ -4,6 +4,8 @@ let username = document.getElementById("username");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 
+let updateBtn = document.getElementById("update");
+updateBtn.style.display = "none";
 // create user
 const createUser = () => {
   let inputId = id.value;
@@ -77,16 +79,21 @@ document.getElementById("form").addEventListener("submit", (e) => {
   // update user
   document.getElementById("tbody").addEventListener("click", (e) => {
     let target = e.target;
-    selectedRow = target.parentElement.parentElement;
+    let selectedRow = target.parentElement.parentElement;
     if (target.classList.contains("edit")) {
+      updateBtn.style.display = "flex";
       id.value = selectedRow.children[0].textContent;
       full_name.value = selectedRow.children[1].textContent;
       username.value = selectedRow.children[2].textContent;
       email.value = selectedRow.children[3].textContent;
       password.value = selectedRow.children[4].textContent;
 
-      document.getElementById("save").addEventListener("click", () => {
-        selectedRow.remove();
+      updateBtn.addEventListener("click", () => {
+        selectedRow.children[0].textContent = id.value;
+        selectedRow.children[1].textContent = full_name.value;
+        selectedRow.children[2].textContent = username.value;
+        selectedRow.children[3].textContent = email.value;
+        selectedRow.children[4].textContent = password.value;
       });
     }
   });
