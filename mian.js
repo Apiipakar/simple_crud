@@ -6,6 +6,9 @@ let password = document.getElementById("password");
 
 let updateBtn = document.getElementById("update");
 updateBtn.style.display = "none";
+
+let table = document.getElementById("table");
+table.style.visibility = "hidden";
 // create user
 const createUser = () => {
   let inputId = id.value;
@@ -42,6 +45,7 @@ const createUser = () => {
     </tr>`;
 
     document.getElementById("tbody").append(trBody);
+    table.style.visibility = "visible";
   }
 
   id.value = "";
@@ -50,6 +54,9 @@ const createUser = () => {
   email.value = "";
   password.value = "";
 };
+// create user invoke
+document.getElementById("save").addEventListener("click", createUser);
+
 // clear input values
 const clearInputs = () => {
   id.value = "";
@@ -60,15 +67,13 @@ const clearInputs = () => {
 
   updateBtn.style.display = "none";
 };
+// clear inputs function invoke
+document.getElementById("clear").addEventListener("click", clearInputs);
 
 // form handle
 document.getElementById("form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // clear inputs
-  document.getElementById("clear").addEventListener("click", clearInputs);
-  // create user
-  document.getElementById("save").addEventListener("click", createUser);
   // delete user
   document.getElementById("tbody").addEventListener("click", (e) => {
     let target = e.target;
